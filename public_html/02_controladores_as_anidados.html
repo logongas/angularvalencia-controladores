@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Controladores "as" anidados</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="lib/angular/1.4/js/angular.js" type="text/javascript"></script>
+        <script src="02_controladores_as_anidados.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div ng-controller="FacturaController as facturaController">
+            <h3>Dentro del controlador Factura</h3>
+            Empresa:{{facturaController.factura.empresa}}<br>
+            <div ng-controller="LineaFacturaController as lineaFacturaController">
+                <h3>Dentro del controlador LineaFactura</h3>
+                Empresa:{{facturaController.factura.empresa}}<br>    
+                Concepto:{{lineaFacturaController.lineaFactura.concepto}}  
+            </div>
+        </div>
+    </body>
+</html>
