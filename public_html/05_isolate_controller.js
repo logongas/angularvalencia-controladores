@@ -59,11 +59,9 @@ app.config(function ($provide) {
         newFn = function (expression, locals, later, ident) {
 
             if ((locals.$attrs) && (locals.$attrs.isolateController)) {
-                if (locals.$attrs) {
-                    for (var propertyName in locals.$attrs) {
-                        if (propertyName.charAt(0) !== "$") {
-                            bindingPropertyToScope(locals.$scope, locals.$attrs[propertyName], propertyName, $interpolate, $parse);
-                        }
+                for (var propertyName in locals.$attrs) {
+                    if (propertyName.charAt(0) !== "$") {
+                        bindingPropertyToScope(locals.$scope, locals.$attrs[propertyName], propertyName, $interpolate, $parse);
                     }
                 }
             }
@@ -83,6 +81,11 @@ app.config(function ($provide) {
             var realPropertyName = removeStartAndEnd(propertyName, "[(", ")]");
             var getFn = $parse(rawValue);
             var setFn = $parse(rawValue).assign;
+            
+            if (!setFn) {
+                throw new Error("La expresion no es asignable:"+rawValue);
+            }
+            
             scope[realPropertyName] = getFn(scope.$parent);
             scope.$parent.$watch(function () {
                 return getFn(scope.$parent);
@@ -114,12 +117,14 @@ app.config(function ($provide) {
                 }
                 scope[realPropertyName] = newVal;
             }, true);
+            
         } else if (isStartAndEndWith(propertyName, "(", ")")) {
             var realPropertyName = removeStartAndEnd(propertyName, "(", ")");
             var getFn = $parse(rawValue);
             scope[realPropertyName] = function (locals) {
                 getFn(scope.$parent, locals);
             };
+            
         } else {
             var realPropertyName = propertyName;
             var templateFn = $interpolate(rawValue);
