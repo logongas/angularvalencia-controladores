@@ -1,7 +1,7 @@
 var app = angular.module("app", []);
 
 app.component("miFactura", {
-    template: "<h3>Dentro del controlador Factura</h3>Empresa:{{factura.factura.empresa}}<br><mi-linea-factura factura='factura.factura' ></mi-linea-factura>",
+    templateUrl :"04_mi-factura-tpl.html",
     controller: function () {
         this.factura = {
             id: 4,
@@ -21,7 +21,7 @@ app.component("miFactura", {
 
 
 app.component("miLineaFactura", {
-    template: "<h3>Dentro del controlador LineaFactura</h3>Empresa:{{lineaFactura.factura.empresa}}<br>Concepto:{{lineaFactura.lineaFactura.concepto}} ",
+    templateUrl :"04_mi-linea-factura-tpl.html",
     controller: function () {
         this.lineaFactura = {
             id: 45,

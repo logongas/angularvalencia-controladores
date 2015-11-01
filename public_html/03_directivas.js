@@ -4,7 +4,7 @@ app.directive("miFactura",FacturaDirective);
 function FacturaDirective() {
     return {
         restrict:"E",
-        template:"<h3>Dentro del controlador Factura</h3>Empresa:{{factura.factura.empresa}}<br><mi-linea-factura factura='factura.factura' ></mi-linea-factura>",
+        templateUrl :"03_mi-factura-tpl.html",
         controller:function() {
             this.factura={
                 id:4,
@@ -18,7 +18,7 @@ function FacturaDirective() {
                 superreducido:4
             } 
         },
-        controllerAs:"factura",
+        controllerAs:"miFactura",
         scope:{
             
         },
@@ -32,7 +32,7 @@ app.directive("miLineaFactura",LineaFacturaDirective);
 function LineaFacturaDirective() {
     return {
         restrict:"E",
-        template:"<h3>Dentro del controlador LineaFactura</h3>Empresa:{{lineaFactura.factura.empresa}}<br>Concepto:{{lineaFactura.lineaFactura.concepto}} ",
+        templateUrl :"03_mi-linea-factura-tpl.html",
         controller:function() {
             this.lineaFactura={
                 id:45,
@@ -41,7 +41,7 @@ function LineaFacturaDirective() {
                 concepto:"Mosquitera"
             };
         },
-        controllerAs:"lineaFactura",
+        controllerAs:"miLineaFactura",
         scope:{
             
         },
