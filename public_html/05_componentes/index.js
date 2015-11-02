@@ -1,7 +1,7 @@
 var app = angular.module("app", []);
 
 app.component("miFactura", {
-    templateUrl :"04_mi-factura-tpl.html",
+    templateUrl :"mi-factura-tpl.html",
     controller: function () {
         this.factura = {
             id: 4,
@@ -21,7 +21,7 @@ app.component("miFactura", {
 
 
 app.component("miLineaFactura", {
-    templateUrl :"04_mi-linea-factura-tpl.html",
+    templateUrl :"mi-linea-factura-tpl.html",
     controller: function () {
         this.lineaFactura = {
             id: 45,
