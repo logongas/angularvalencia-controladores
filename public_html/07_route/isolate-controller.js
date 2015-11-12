@@ -17,8 +17,7 @@ function isolateController() {
 
 
 
-app.config(function ($provide) {
-    $provide.decorator("$controller", function ($delegate, $interpolate, $parse) {
+app.decorator("$controller", function ($delegate, $interpolate, $parse) {
 
         var originalFn = $delegate;
 
@@ -33,10 +32,6 @@ app.config(function ($provide) {
         };
 
         return newFn;
-
-    });
-
-
 });
 
 function bindAttrsToScope($scope, $attrs, $interpolate, $parse) {
