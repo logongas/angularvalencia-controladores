@@ -4,7 +4,6 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
         templateUrl: "main.html",
-        controller:"ControllerParams",
         resolve:{
             controllerParams:function() {
                 return {
@@ -15,7 +14,6 @@ app.config(function ($routeProvider) {
     });
     $routeProvider.when('/:idFactura', {
         templateUrl: "main.html",
-        controller:"ControllerParams",
         resolve:{
             controllerParams:function($route) {
                 return {
@@ -30,10 +28,7 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.controller("ControllerParams", ['$scope','controllerParams',ControllerParams]);
-function ControllerParams($scope,controllerParams) {
-    angular.extend($scope,controllerParams)
-}
+
 
 app.controller("FacturaController", ['$scope',FacturaController]);
 function FacturaController(that) {
