@@ -7,7 +7,8 @@ app.config(function ($routeProvider) {
         resolve:{
             controllerParams:function() {
                 return {
-                    idFactura:34
+                    idFactura:34,
+                    controllerName:"FacturaController"
                 };
             }
         }
@@ -17,7 +18,8 @@ app.config(function ($routeProvider) {
         resolve:{
             controllerParams:function($route) {
                 return {
-                    idFactura:$route.current.params.idFactura
+                    idFactura:$route.current.params.idFactura,
+                    controllerName:"FacturaController"
                 };
             }
         }
