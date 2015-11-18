@@ -1,19 +1,12 @@
         <div isolate-controller="{{controllerName}}" [id-factura]="idFactura">
             <h3>Dentro del controlador Factura</h3>
             Empresa:{{factura.empresa}}<br>
-            idFactura:{{idFactura}}<br>
+            idFactura (viene desde la ruta):{{idFactura}}<br>
             <div isolate-controller="LineaFacturaController" [factura]="factura"  (button)="pulsadoBoton(message,tiposIVA.general)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>
                 <button ng-click="button({message:lineaFactura.concepto})">Pulsar</button>
-            </div>
-            
-            <div isolate-controller="LineaFacturaController" [(empresa)]="factura.empresa"  (button)="pulsadoBoton(message,tiposIVA.general)" >
-                <h3>Dentro del controlador LineaFactura</h3>
-                Empresa:<input ng-model="empresa"> <br>    
-                Concepto:<input ng-model="lineaFactura.concepto"> <br>
-                <button ng-click="button({message:lineaFactura.concepto})">Pulsar</button>
-            </div>            
+            </div>          
             
         </div>
