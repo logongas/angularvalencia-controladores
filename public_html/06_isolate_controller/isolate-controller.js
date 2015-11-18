@@ -23,10 +23,17 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
 
         newFn = function (expression, locals, later, ident) {
 
-            //Realizar aqui en binding automáticamente de $attrs a $scope
-            var $scope = locals.$scope;
-            var $attrs = locals.$attrs;            
-            bindAttrsToScope($scope, $attrs, $interpolate, $parse);
+            if (locals) {
+                //Realizar aqui en binding automáticamente de $attrs a $scope
+                var $scope = locals.$scope;
+                var $attrs = locals.$attrs;            
+                bindAttrsToScope($scope, $attrs, $interpolate, $parse);
+
+                //Interpolamos el propio nombre del controlador
+                if ((locals.$scope) && (typeof(expression)==="string")) {
+                    expression = $interpolate(expression)($scope.$parent);
+                }
+            }
 
             return originalFn(expression, locals, later, ident);
         };
