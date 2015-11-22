@@ -15,7 +15,9 @@ function FacturaDirective() {
                 general:21,
                 reducido:10,
                 superreducido:4
-            } 
+            }
+            
+            this.privateValue="s3cret";
         },
         controllerAs :"miFactura",
         bindToController:{
@@ -30,6 +32,7 @@ function FacturaDirective() {
 app.directive("miLineaFactura",LineaFacturaDirective);
 function LineaFacturaDirective() {
     return {
+        require:"^miFactura",
         templateUrl :"mi-linea-factura-tpl.html",
         controller:function() {
             this.lineaFactura={
@@ -45,7 +48,10 @@ function LineaFacturaDirective() {
         },
         scope: {
             
-        }
+        },
+        link: function(scope, element, attrs, miFacturaController) {
+          console.log("Accediendo a valor privado del controlador:"+miFacturaController.privateValue)
+        }        
     }    
 
 };
