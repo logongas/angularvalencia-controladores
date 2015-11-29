@@ -9,15 +9,15 @@
         <script src="generic-component.js" type="text/javascript"></script>
     </head>
     <body>
-        <div generic-component="FacturaController">
+        <generic-component controller-name="FacturaController">
             <h3>Dentro del controlador Factura</h3>
             Empresa:<input ng-model="factura.empresa"><br>
-            <div generic-component="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
+            <generic-component controller-name="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>
                 <button ng-click="onButton({mensaje:lineaFactura.concepto})">Avisar</button>
-            </div>
-        </div>
+            </generic-component>
+        </generic-component>
     </body>
 </html>

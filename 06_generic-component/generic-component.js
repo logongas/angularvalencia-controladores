@@ -1,7 +1,7 @@
 app.directive('genericComponent', genericComponent);
 function genericComponent() {
     return {
-        restrict: 'A',
+        restrict: 'E',
         scope: {
         },
         priority: 500,
@@ -23,16 +23,11 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
 
         newFn = function (expression, locals, later, ident) {
 
-            if (locals) {
-                //Realizar aqui en binding automáticamente de $attrs a $scope
-                var $scope = locals.$scope;
-                var $attrs = locals.$attrs;            
-                bindAttrsToScope($scope, $attrs, $interpolate, $parse);
+            if ((locals) && (locals.$scope) && (locals.$attrs) && (locals.$element) && (locals.$element.length===1) && (locals.$element[0].nodeName==="GENERIC-COMPONENT") && (!expression)) {
+                //Realizar aqui en binding automáticamente de $attrs a $scope           
+                bindAttrsToScope(locals.$scope, locals.$attrs, $interpolate, $parse);
 
-                //Interpolamos el propio nombre del controlador
-                if ((locals.$scope) && (typeof(expression)==="string")) {
-                    expression = $interpolate(expression)($scope.$parent);
-                }
+                expression=locals.$scope.controllerName;
             }
 
             return originalFn(expression, locals, later, ident);
@@ -42,11 +37,9 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
 });
 
 function bindAttrsToScope($scope, $attrs, $interpolate, $parse) {
-    if (($scope) && ($attrs) && ($attrs.genericComponent)) {
-        for (var propertyName in $attrs) {
-            if (propertyName.charAt(0) !== "$") {
-                bindingAttrToScope($scope, $attrs[propertyName], propertyName, $interpolate, $parse);
-            }
+    for (var propertyName in $attrs) {
+        if (propertyName.charAt(0) !== "$") {
+            bindingAttrToScope($scope, $attrs[propertyName], propertyName, $interpolate, $parse);
         }
     }
 }
