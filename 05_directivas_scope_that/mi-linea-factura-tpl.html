@@ -1,3 +1,4 @@
 <h3>Dentro de la directiva LineaFactura</h3>
 Empresa:{{factura.empresa}}<br>
-Concepto:{{lineaFactura.concepto}}
+Concepto:{{lineaFactura.concepto}}<br>
+<button ng-click="onButton({mensaje:lineaFactura.concepto})">Avisar</button>  

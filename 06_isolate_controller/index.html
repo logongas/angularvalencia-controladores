@@ -12,11 +12,11 @@
         <div isolate-controller="FacturaController">
             <h3>Dentro del controlador Factura</h3>
             Empresa:<input ng-model="factura.empresa"><br>
-            <div isolate-controller="LineaFacturaController" [factura]="factura"  (button)="pulsadoBoton(message,tiposIVA.general)" >
+            <div isolate-controller="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>
-                <button ng-click="button({message:lineaFactura.concepto})">Pulsar</button>
+                <button ng-click="onButton({mensaje:lineaFactura.concepto})">Avisar</button>
             </div>
         </div>
     </body>

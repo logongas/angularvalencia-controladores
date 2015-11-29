@@ -14,7 +14,8 @@
             <div ng-controller="LineaFacturaController as lineaFacturaController">
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:{{facturaController.factura.empresa}}<br>    
-                Concepto:{{lineaFacturaController.lineaFactura.concepto}}  
+                Concepto:{{lineaFacturaController.lineaFactura.concepto}}<br>
+                <button ng-click="facturaController.avisar(lineaFacturaController.lineaFactura.concepto)">Avisar</button>  
             </div>
         </div>
     </body>

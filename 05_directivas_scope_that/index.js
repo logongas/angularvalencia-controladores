@@ -17,6 +17,10 @@ function FacturaDirective() {
                 superreducido:4
             } 
             
+            that.avisar=function(message) {
+                alert(message);
+            };             
+            
             vm.privateValue="s3cret";
             this.publicValue="hola";
             
@@ -41,7 +45,8 @@ function LineaFacturaDirective() {
             };
         }],
         scope:{
-            factura:"="
+            factura:"=",
+            onButton:"&"
         },
         link: function(scope, element, attrs, miFacturaController) {
           console.log("Accediendo a valor privado del controlador:"+miFacturaController.privateValue)
