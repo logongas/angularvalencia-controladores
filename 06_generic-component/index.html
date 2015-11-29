@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../lib/angular/1.4/js/angular.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
-        <script src="isolate-controller.js" type="text/javascript"></script>
+        <script src="generic-component.js" type="text/javascript"></script>
     </head>
     <body>
-        <div isolate-controller="FacturaController">
+        <div generic-component="FacturaController">
             <h3>Dentro del controlador Factura</h3>
             Empresa:<input ng-model="factura.empresa"><br>
-            <div isolate-controller="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
+            <div generic-component="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>

@@ -1,12 +1,10 @@
-        <div isolate-controller="{{controllerName}}" [id-factura]="idFactura">
+        <div generic-component="{{controllerName}}">
             <h3>Dentro del controlador Factura</h3>
-            Empresa:{{factura.empresa}}<br>
-            idFactura (viene desde la ruta):{{idFactura}}<br>
-            <div isolate-controller="LineaFacturaController" [factura]="factura"  (button)="pulsadoBoton(message,tiposIVA.general)" >
+            Empresa:<input ng-model="factura.empresa"><br>
+            <div generic-component="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>
-                <button ng-click="button({message:lineaFactura.concepto})">Pulsar</button>
-            </div>          
-            
+                <button ng-click="onButton({mensaje:lineaFactura.concepto})">Avisar</button>
+            </div>
         </div>

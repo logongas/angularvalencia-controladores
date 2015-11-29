@@ -1,5 +1,5 @@
-app.directive('isolateController', isolateController);
-function isolateController() {
+app.directive('genericComponent', genericComponent);
+function genericComponent() {
     return {
         restrict: 'A',
         scope: {
@@ -30,7 +30,7 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
                 bindAttrsToScope($scope, $attrs, $interpolate, $parse);
 
                 //Interpolamos el propio nombre del controlador
-                if ((locals.$scope) && (typeof(expression)==="string") && (expression.indexOf($interpolate.startSymbol())>=0) && (expression.indexOf($interpolate.endSymbol())>=0)) {
+                if ((locals.$scope) && (typeof(expression)==="string")) {
                     expression = $interpolate(expression)($scope.$parent);
                 }
             }
@@ -42,7 +42,7 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
 });
 
 function bindAttrsToScope($scope, $attrs, $interpolate, $parse) {
-    if (($scope) && ($attrs) && ($attrs.isolateController)) {
+    if (($scope) && ($attrs) && ($attrs.genericComponent)) {
         for (var propertyName in $attrs) {
             if (propertyName.charAt(0) !== "$") {
                 bindingAttrToScope($scope, $attrs[propertyName], propertyName, $interpolate, $parse);
