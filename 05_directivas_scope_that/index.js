@@ -17,7 +17,7 @@ function FacturaDirective() {
                 superreducido:4
             } 
             
-            that.avisar=function(message) {
+            vm.avisar=function(message) {
                 alert(message);
             };             
             
@@ -36,8 +36,8 @@ function LineaFacturaDirective() {
     return {
         require:"^miFactura",        
         templateUrl :"mi-linea-factura-tpl.html",
-        controller:['$scope',function(that) {
-            that.lineaFactura={
+        controller:['$scope',function(vm) {
+            vm.lineaFactura={
                 id:45,
                 cantidad:2,
                 precioUnitario:5,
@@ -49,8 +49,8 @@ function LineaFacturaDirective() {
             onButton:"&"
         },
         link: function(scope, element, attrs, miFacturaController) {
-          console.log("Accediendo a valor privado del controlador:"+miFacturaController.privateValue)
-          console.log("Accediendo a valor público del controlador:"+miFacturaController.publicValue)
+          console.log("Accediendo a valor privado del controlador:"+miFacturaController.privateValue);
+          console.log("Accediendo a valor público del controlador:"+miFacturaController.publicValue);
         }
     }    
 
