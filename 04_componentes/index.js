@@ -13,7 +13,11 @@ app.component("miFactura", {
             general: 21,
             reducido: 10,
             superreducido: 4
-        }
+        };
+        
+        this.avisar=function(message) {
+            alert(message);
+        };        
     },
     bindings: {
     }
@@ -31,7 +35,8 @@ app.component("miLineaFactura", {
         };
     },
     bindings: {
-        factura: "="
+        factura: "=",
+        onButton:"&"
     }
 });
 

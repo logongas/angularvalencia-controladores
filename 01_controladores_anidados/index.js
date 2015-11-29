@@ -14,6 +14,10 @@ function FacturaController($scope) {
         reducido:10,
         superreducido:4
     }
+    
+    $scope.avisar=function(message) {
+        alert(message);
+    }
 }
 
 app.controller("LineaFacturaController",LineaFacturaController);

@@ -14,6 +14,11 @@ function FacturaController() {
         reducido:10,
         superreducido:4
     }
+    
+    this.avisar=function(message) {
+        alert(message);
+    }
+    
 }
 
 app.controller("LineaFacturaController",LineaFacturaController);

@@ -15,7 +15,11 @@ function FacturaDirective() {
                 general:21,
                 reducido:10,
                 superreducido:4
-            } 
+            };
+            
+            this.avisar=function(message) {
+                alert(message);
+            };
         },
         controllerAs :"miFactura",
         bindToController:{
@@ -41,7 +45,8 @@ function LineaFacturaDirective() {
         },
         controllerAs :"miLineaFactura",
         bindToController:{
-            factura:"="
+            factura:"=",
+            onButton:"&"
         },
         scope: {
             

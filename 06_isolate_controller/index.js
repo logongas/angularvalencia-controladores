@@ -13,11 +13,11 @@ function FacturaController(that) {
         general: 21,
         reducido: 10,
         superreducido: 4
-    }
+    };
 
-    that.pulsadoBoton = function (a, b) {
-        alert("pulsado:" + a + "," + b);
-    }
+    that.avisar=function(message) {
+        alert(message);
+    }; 
 };
 
 app.controller("LineaFacturaController", ['$scope',LineaFacturaController]);

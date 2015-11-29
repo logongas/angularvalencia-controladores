@@ -15,7 +15,12 @@ function FacturaDirective() {
                 general:21,
                 reducido:10,
                 superreducido:4
-            } 
+            }
+            
+            that.avisar=function(message) {
+                alert(message);
+            };             
+            
         }],
         scope:{
             
@@ -36,7 +41,8 @@ function LineaFacturaDirective() {
             };
         }],
         scope:{
-            factura:"="
+            factura:"=",
+            onButton:"&"
         }
     }    
 
