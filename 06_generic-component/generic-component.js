@@ -27,7 +27,7 @@ app.decorator("$controller", function ($delegate, $interpolate, $parse) {
                 //Realizar aqui en binding automáticamente de $attrs a $scope           
                 bindAttrsToScope(locals.$scope, locals.$attrs, $interpolate, $parse);
 
-                expression=locals.$scope.controllerName;
+                expression=locals.$scope.controller;
             }
 
             return originalFn(expression, locals, later, ident);

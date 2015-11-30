@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
-        <title>isolate-controller</title>
+        <title>generic-component</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../lib/angular/1.4/js/angular.js" type="text/javascript"></script>
@@ -9,10 +9,10 @@
         <script src="generic-component.js" type="text/javascript"></script>
     </head>
     <body>
-        <generic-component controller-name="FacturaController">
+        <generic-component controller="FacturaController">
             <h3>Dentro del controlador Factura</h3>
             Empresa:<input ng-model="factura.empresa"><br>
-            <generic-component controller-name="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
+            <generic-component controller="LineaFacturaController" [factura]="factura"  (on-button)="avisar(mensaje)" >
                 <h3>Dentro del controlador LineaFactura</h3>
                 Empresa:<input ng-model="factura.empresa"> <br>    
                 Concepto:<input ng-model="lineaFactura.concepto"> <br>
