@@ -2,27 +2,27 @@ var app = angular.module("app", []);
 
 
 app.controller("FacturaController", ['$scope',FacturaController]);
-function FacturaController(that) {
-    that.factura = {
+function FacturaController(vm) {
+    vm.factura = {
         id: 4,
         importeTotal: 34,
         empresa: "Persianas López"
     };
 
-    that.tiposIVA = {
+    vm.tiposIVA = {
         general: 21,
         reducido: 10,
         superreducido: 4
     };
 
-    that.avisar=function(message) {
+    vm.avisar=function(message) {
         alert(message);
     }; 
 };
 
 app.controller("LineaFacturaController", ['$scope',LineaFacturaController]);
-function LineaFacturaController(that) {
-    that.lineaFactura = {
+function LineaFacturaController(vm) {
+    vm.lineaFactura = {
         id: 45,
         cantidad: 2,
         precioUnitario: 5,
