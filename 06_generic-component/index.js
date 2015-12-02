@@ -30,5 +30,18 @@ function LineaFacturaController(vm) {
     }
 }
 
+app.factory("inheritFromController", ['$controller', function ($controller) {
+        
+        /**
+         * Hace que un controlador herede de otro
+         * @param {Controller} childController - El controlador que quiere heredar de otro
+         * @param {String} parentController - Nombre del controlador del que queremos heredar
+         * @param {$Scope} childScope - El $scope del controlador que quiere heredar
+         */
+        return function (childController,parentController, childScope) {
+            var parent = $controller(parentController, {$scope: childScope});
+            Object.setPrototypeOf(childController, parent);
+        };
+    }]);
 
 
